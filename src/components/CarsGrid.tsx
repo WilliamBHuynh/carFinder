@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { Card, Dimmer, Loader } from 'semantic-ui-react';
 import CarCard from './CarCard';
 
 const fetchCars = async () => {
@@ -12,16 +13,23 @@ const CarsGrid = () => {
     console.log("data: " + data);
     return (
         <div>
-            <h2>CarsGrid</h2>
-
+            <h4>List of cars:</h4>
             {status === 'error' &&
                 <div>Error loading data..</div>}
 
-            {status === 'success' &&
+            {status === 'loading' &&
                 <div>
-                    {data.map((car: Car) => <div><CarCard car={car} /></div>)}
+                    <Dimmer active inverted>
+                        <Loader inverted content="Loading" />
+                    </Dimmer>
                 </div>}
 
+            {status === 'success' &&
+                <div>
+                    <Card.Group itemsPerRow={4}>
+                        {data.map((car: Car) => <div><CarCard car={car} /></div>)}
+                    </Card.Group>
+                </div>}
         </div>
     )
 }
