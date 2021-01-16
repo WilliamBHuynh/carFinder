@@ -1,7 +1,7 @@
 {
   "name": "car-list-app",
   "version": "0.1.0",
-  "homepage": "https://williambhuynh.github.io/carHub/",
+  "homepage": "https://williambhuynh.github.io/carFinder/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
