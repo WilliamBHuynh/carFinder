@@ -1,6 +1,6 @@
 import React, { useState, SyntheticEvent, ChangeEvent } from "react";
 import { useQuery, QueryClient, QueryClientProvider } from "react-query";
-import { Button, Card, Dimmer, Dropdown, Input, Loader } from "semantic-ui-react";
+import { Button, Card, Dimmer, Dropdown, Icon, Input, Loader } from "semantic-ui-react";
 import CarCard from "./components/CarCard";
 import "./index.css";
 
@@ -84,7 +84,7 @@ function App() {
 
         {status === "success" &&
           <div>
-            <Card.Group itemsPerRow={4} centered>
+            <Card.Group itemsPerRow={3} centered>
               {data.map((car: Car) => (isSearch ? (carContainsStr(car, searchTerm) ? <div><CarCard car={car} /></div> : <div></div>)
                 : (car.make === currentMake.value ? <div><CarCard car={car} /></div> : <div></div>)))}
             </Card.Group>
@@ -95,31 +95,49 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
+      <div>
         <div>
-          <header className="title">Car Finder</header>
+          <header className="title">
+            <span className="titleFirstHalf">Car</span>
+            Finder
+          </header>
+          <p className="slogan">Find your next ride!</p>
         </div>
 
-        <div>
-          <Input
-            placeholder="Search car by make and/or model"
-            value={searchTerm}
-            onChange={onSearchChange}
-          />
-          <Button onClick={onSearch} secondary>
-            Search
-          </Button>
-          <Dropdown
-            className="dropdown"
-            fluid
-            selection
-            placeholder="Filter by make"
-            value={currentMake.text}
-            options={makes}
-            onChange={handleMakeChange}
-          />
+        <div className="banner">
+          <p>List of cars</p>
         </div>
-        <div>
+
+        <div className="center">
+          <div className="searchBar">
+            <div>
+              <Input
+                className="searchInput"
+                placeholder="Search car by make and/or model"
+                value={searchTerm}
+                onChange={onSearchChange}
+              />
+            </div>
+            <div>
+              <Button className="searchBtn" onClick={onSearch}>
+                <Icon name="search" />
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className="center">
+          <div className="dropdown">
+            <Dropdown
+              fluid
+              selection
+              placeholder="Filter by make"
+              value={currentMake.text}
+              options={makes}
+              onChange={handleMakeChange}
+            />
+          </div>
+        </div>
+        <div className="grid">
           <CarsGrid />
         </div>
       </div>

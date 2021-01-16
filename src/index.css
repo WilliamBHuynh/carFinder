@@ -1,8 +1,32 @@
 .title {
   font-size: 300%;
   display: flex;
+  font-weight: bold;
   justify-content: center;
-  padding: 30px;
+  padding-top: 25px;
+  padding-bottom: 15px;
+}
+
+.titleFirstHalf {
+  color: #FF9B20;
+  -webkit-text-stroke: 1px black;
+}
+
+.slogan {
+  display: flex;
+  justify-content: center;
+  color: gray;
+  padding-bottom: 15px;
+}
+
+.banner {
+  padding: 20px;
+  background: #FF8C17;
+  color: white;
+  font-size: 150%;
+  display: flex;
+  width: 100%;
+  height: auto;
 }
 
 .card {
@@ -10,13 +34,30 @@
   height: 100%;
 }
 
-.dropdown {
-  padding: 1%;
-  width: 60%;
-  margin: 0 auto;
+.center {
+  display: flex;
+  padding: 15px;
 }
 
-#container {
+.searchBar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
   justify-content: center;
-  display: flex;
+}
+
+.searchInput {
+  width: 250px;
+}
+
+.searchBtn {
+  width: 55px;   
+}
+
+.dropdown {
+  width: 160px;
+}
+
+.grid {
+  margin-left: 40px;
 }
